@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.cntt.ui.home.HomeFragment"
+        android:label="Trang chủ"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.cntt.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.cntt.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_chi"
+        android:name="com.cntt.ui.chi.ChiFragment"
+        android:label="Chi Tiêu"
+        tools:layout="@layout/fragment_chi" />
+    <fragment
+        android:id="@+id/nav_thu"
+        android:name="com.cntt.ui.thu.ThuFragment"
+        android:label="Thu Nhập"
+        tools:layout="@layout/fragment_thu" />
+    <fragment
+        android:id="@+id/nav_gioithieu"
+        android:name="com.cntt.ui.gioithieu.GioiThieuFragment"
+        android:label="Giới Thiệu"
+        tools:layout="@layout/fragment_gioi_thieu" />
+    <fragment
+        android:id="@+id/nav_thongke"
+        android:name="com.cntt.ui.thongke.ThongKeFragment"
+        android:label="Thống Kê"
+        tools:layout="@layout/fragment_thong_ke" />
+    <fragment
+        android:id="@+id/nav_thoat"
+        android:name="com.cntt.ui.home.HomeFragment"
+        tools:layout="@layout/fragment_home" />
+</navigation>
