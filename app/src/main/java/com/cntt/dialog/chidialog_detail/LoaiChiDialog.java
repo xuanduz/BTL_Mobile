@@ -54,23 +54,36 @@ public class LoaiChiDialog {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 LoaiChi loaiChi = new LoaiChi();
+
+                String editMaLoaiChi = etId.getText().toString();
+                String editTenLoaiChi = etName.getText().toString();
+
                 loaiChi.tenLoaiChi = etName.getText().toString();
-//                Validate and add item in list
-//                Trường hợp trùng nhau (Thiếu validate) và là số
-                if (checkMode){
+
+                    if(editTenLoaiChi.isEmpty()){
+                        Toast.makeText(mDialog.getContext(), "Bạn phải nhập tên loại chi",
+                                Toast.LENGTH_SHORT).show();
+                        return;
+                    }else if (!editTenLoaiChi.matches("[a-zA-Z0-9]*")){
+                        Toast.makeText(context, "Loại chi không đươc chứa kí tự đặc biệt ", Toast.LENGTH_SHORT).show();
+                        return;
+                    } else {
+                        loaiChi.tenLoaiChi = editTenLoaiChi;
+                    }
                     tvContent.setText("Sửa Loại Chi");
-                    loaiChi.id = Integer.parseInt(etId.getText().toString());
+                    //loaiChi.id = Integer.parseInt(etId.getText().toString());
                     mViewModel.updateLC(loaiChi);
                     Toast.makeText(context,"Sửa thành công",Toast.LENGTH_LONG).show();
-                }else {
+                //}else {
                     tvContent.setText("Thêm Loại Chi");
-                    if(loaiChi.tenLoaiChi.isEmpty()){
-                        Toast.makeText(context,"Chưa nhập tên cho loại chi",Toast.LENGTH_LONG).show();
-                    }else {
+                    if(checkMode){
+                        loaiChi.id = Integer.parseInt(etId.getText().toString());
+                        mViewModel.updateLC(loaiChi);
+                        Toast.makeText(context, "Sửa thành công loại chi", Toast.LENGTH_LONG).show();
+                    }else{
                         mViewModel.insertLC(loaiChi);
-                        Toast.makeText(context,"Loại chi đã được thêm",Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Loại chi đã được thêm", Toast.LENGTH_LONG).show();
                     }
-                }
             }
         });
         mDialog = builder.create();
