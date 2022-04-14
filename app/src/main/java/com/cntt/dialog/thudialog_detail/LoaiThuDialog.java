@@ -56,22 +56,37 @@ public class LoaiThuDialog {
         }).setPositiveButton("Lưu", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-//                Validate and add item in list
-//                Trường hợp trùng nhau (Thiếu validate) và là số
+                //Validate and add item in list
+                //Trường hợp trùng nhau (Thiếu validate) và là số
                 LoaiThu lt = new LoaiThu();
                 lt.ten = etName.getText().toString();
+
+                String editTenLoaiThu = etName.getText().toString();
+                String edtmaloaithu = etId.getText().toString();
+
+                if(editTenLoaiThu.isEmpty()){
+                    Toast.makeText(mDialog.getContext(), "Bạn phải nhập tên loại thu",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }else if (!editTenLoaiThu.matches("[a-zA-Z0-9^ ]*")){
+                    Toast.makeText(context, "Loại thu không đươc chứa kí tự đặc biệt ", Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
+                    lt.ten = editTenLoaiThu;
+                }
 
                 if(checkMode){
                     lt.lid = Integer.parseInt(etId.getText().toString());
                     mViewModel.updateLT(lt);
                     Toast.makeText(context,"Sửa thành công",Toast.LENGTH_LONG).show();
                 }else {
+
                     if (lt.ten.isEmpty()){
                         Toast.makeText(context,"Chưa nhập tên cho loại thu",Toast.LENGTH_LONG).show();
                     }else {
 
                         mViewModel.insertLT(lt);
-                        Toast.makeText(context,"Loại thu đã được lưu",Toast.LENGTH_LONG).show();
+                        Toast.makeText(context,"Loại thu đã được lưu ",Toast.LENGTH_LONG).show();
                     }
                 }
 
