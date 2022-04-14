@@ -64,7 +64,7 @@ public class LoaiChiDialog {
                         Toast.makeText(mDialog.getContext(), "Bạn phải nhập tên loại chi",
                                 Toast.LENGTH_SHORT).show();
                         return;
-                    }else if (!editTenLoaiChi.matches("[a-zA-Z0-9]*")){
+                    }else if (!editTenLoaiChi.matches("[a-zA-Z0-9^ ]*")){
                         Toast.makeText(context, "Loại chi không đươc chứa kí tự đặc biệt ", Toast.LENGTH_SHORT).show();
                         return;
                     } else {
